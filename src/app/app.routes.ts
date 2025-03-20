@@ -12,5 +12,12 @@ export const routes: Routes = [
         loadComponent: ()=>{
             return import("./pages/home/home.component").then((p)=>p.HomeComponent)
         }
+    },
+    {
+        path: "courses",
+        loadComponent: ()=>{
+            return import("./pages/courses/courses.component")
+            .then((p)=>p.CoursesComponent)
+        }
     }
 ];

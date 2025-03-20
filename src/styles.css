@@ -35,3 +35,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .yellow-green-color{
     color: yellowgreen;
 }
+
+.overlay-container{
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background-image: url("../public/assets/images/banner3.jpg");
+    background-size: cover;
+}
+.gray-overlay{
+    position: absolute;
+    width:100%;
+    background-color: rgba(51, 39, 49, .89);
+    height: 100vh;
+}
