@@ -1,0 +1,8 @@
+.menu-lists ul li{
+    padding: 2px 15px;
+    cursor: pointer;
+}
+
+.hover-effect:hover{
+    color: rgba(255, 255, 255, .3);
+}

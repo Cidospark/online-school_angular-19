@@ -6,4 +6,32 @@
 *{
     padding: 0px;
     margin: 0px;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.c-pointer{
+    cursor: pointer;
+}
+
+.space-no-wrap{
+    white-space: nowrap;
+}
+
+.transparent-bg-brown{
+    background-color:  rgba(51, 39, 49, .3);
+}
+
+.transparent-bg-black{
+    background-color:  rgba(51, 19, 29, .7);
+}
+.half-width{
+    width: 50%;
+}
+
+.yellow-green-color{
+    color: yellowgreen;
 }

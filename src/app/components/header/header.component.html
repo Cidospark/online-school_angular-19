@@ -1,0 +1,31 @@
+<div class="my-12 flex justify-between align-items flex-nowrap">
+    <p class="c-pointer font-bold text-3xl space-no-wrap">{{title()}}</p>
+    <div class="flex justify-between menu-lists">
+        <ul class="flex justify-between font-bold">
+            @if(showToggleButton()){
+                <li>
+                    <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home"></mat-icon>
+                </li>
+            }
+            @if(!showToggleButton()){
+                <li>
+                    <ul class="flex justify-between">
+                        <li class="hover-effect space-no-wrap">HOME</li>
+                        <li class="hover-effect space-no-wrap">COURSES</li>
+                        <li class="hover-effect space-no-wrap">ABOUT</li>
+                        <li class="hover-effect space-no-wrap">CONTACT</li>
+                    </ul>
+                </li>
+            }
+            
+        </ul>
+        <ul class="flex justify-between font-bold">
+            <li class="hover-effect">
+                
+                <mat-icon aria-hidden="false" aria-label="search" fontIcon="search"></mat-icon>
+            </li>
+            <li class="hover-effect">
+                <mat-icon aria-hidden="false" aria-label="cart" fontIcon="shopping_cart"></mat-icon></li>
+        </ul>
+    </div>
+</div>

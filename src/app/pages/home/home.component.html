@@ -1,8 +1,40 @@
 <div class="overlay-container">
     <div class="gray-overlay">
-        <div class="components-container text-white max-w-7xl mx-auto">
-            kdjfdkfbkdbfd
+        <div class="components-container text-white max-w-7xl mx-auto pt-6">
+            <app-header />
+            <p class="text-6xl pt-24 yellow-green-color text-center">
+                Level up your career.
+            </p>
+            <p class="text-1xl pt-2 text-yellow-200 text-center">
+                Learn from tech experts with our online courses.
+            </p>
+            <div class="stats-container my-4 p-14 transparent-bg-black">
+
+                @for (item of statItems(); track $index) {
+                    <app-stats-item  
+                    [icon]="item.icon" 
+                    [statistic]="item.statistics"
+                    [title]="item.title"
+                    />
+                }
+            </div>
         </div>
     </div>
-    <!-- <img src="assets/images/banner1.jpg" alt="slider banner" style="width: 100%;"/> -->
+    
+</div>
+
+<div style="margin-top: -80px; min-height: 200px; border-radius: 15px; position: relative; z-index: 1000;"
+class="components-container bg-white max-w-7xl mx-auto" >
+<h1 class="text-4xl p-5 flex justify-between items-center">
+     <p class="font-bold text-3xl">Featured courses</p>
+     <div class="courosel-btns flex flex-nowrap">
+        <div class="border border-4 hover:bg-yellow-100 p-2 rounded m-1  flex justify-center items-center">
+            <mat-icon aria-hidden="false" aria-label="left button" fontIcon="arrow_back_ios" class="left-courosel-btn"></mat-icon>
+        </div>
+        <div class="border border-4 hover:bg-yellow-100  p-2 rounded m-1 flex justify-center items-center">
+            <mat-icon aria-hidden="false" aria-label="right button" fontIcon="arrow_forward_ios" class="right-courosel-btn"></mat-icon>
+        </div>
+     </div>
+</h1>
+   
 </div>
