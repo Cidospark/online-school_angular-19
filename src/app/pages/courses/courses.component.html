@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="max-w-7xl mx-auto pt-12">
+<div class="max-w-7xl mx-auto py-12">
 <mat-grid-list 
     cols="{{cols()}}" 
     rowHeight="{{rowHeight()}}"
@@ -21,7 +21,7 @@
         </mat-grid-tile>
     }
   </mat-grid-list>
-  <div>
-    <app-pagination (passPageIndexToParent)="onPaginate($event)" />
+  <div class="py-6">
+    <app-pagination (passPageOptToParent)="onPaginate($event)" [totalCount]="totalCourses"/>
   </div>
 </div>

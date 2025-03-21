@@ -1,10 +1,18 @@
 
-<mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               [length]="length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
-               [pageIndex]="pageIndex"
-               aria-label="Select page">
-</mat-paginator>
+<div class="pagination-container">
+    <button mat-raised-button
+        [disabled]="curPage() <= 1"
+        type="button" 
+        class="prev text-white"
+        (click)="prevPage(curPage(), perPage())"
+    >prev</button>
+    <div class="page-meta-info" >
+        <span class="fadedText">page:</span> {{curPage()}} of {{totalPages()}} 
+    </div>
+    <button mat-raised-button
+        [disabled]="curPage() >= totalPages()"
+        type="button" 
+        class="next text-white"
+        (click)="nextPage(curPage(), perPage())"
+    >next</button>
+</div>

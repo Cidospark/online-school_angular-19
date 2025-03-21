@@ -1,0 +1,13 @@
+.pagination-container{
+    width: 80%;
+    min-width: 300px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap!;
+}
+.prev, .next{
+    cursor: pointer;
+    margin: 10px;
+}

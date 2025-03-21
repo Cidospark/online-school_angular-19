@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Course } from '../../models/course.model';
 import { SingleCourseComponent } from '../../components/single-course/single-course.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
+import { PageOpt } from '../../models/pageOpt.models';
 
 const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
 @Component({
@@ -71,25 +72,24 @@ export class CoursesComponent implements OnInit {
   }])
 
   paginatedList = signal<Course[]>([]);
+  totalCourses = 0;
 
 ngOnInit(): void {
-  this.paginatedList.set(
-    this.listOfCourses().slice(0, 2)
-  );
+  this.totalCourses = this.listOfCourses().length;
 }
 
-  setLikedCourse(id: number){
-    this.listOfCourses().map(x => {
-      if(x.id == id)
+setLikedCourse(id: number){
+  this.listOfCourses().map(x => {
+    if(x.id == id)
       {
         x.hearts++
       }
     })
   }
-
-  onPaginate(offset:number){
+  
+  onPaginate(pageOpt:PageOpt){
     this.paginatedList.set(
-      this.listOfCourses().slice(offset, 2)
+      this.listOfCourses().slice(pageOpt.offset, pageOpt.size)
     );
   }
 }

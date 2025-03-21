@@ -63,3 +63,18 @@ body {
     background-color: rgba(51, 39, 49, .89);
     height: 100vh;
 }
+.v-separator{
+    display: inline-block;
+    margin: 0 10px;
+    color: skyblue;
+    font-weight: bolder;
+}
+
+.fadedText{
+    opacity: .4;
+}
+
+.h-separator{
+    margin: 40px auto;
+    border-top: 2px solid #eee;
+}

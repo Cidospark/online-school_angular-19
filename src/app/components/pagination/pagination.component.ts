@@ -1,50 +1,67 @@
 import { JsonPipe } from '@angular/common';
-import { Component, output } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { PageOpt } from '../../models/pageOpt.models';
 
 @Component({
   selector: 'app-pagination',
   imports: [
-    MatFormFieldModule,
-    MatInputModule,
     FormsModule,
-    MatSlideToggleModule,
-    MatPaginatorModule
+    MatButtonModule
   ],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
 export class PaginationComponent {
-  length = 4;
-  pageSize = 2;
-  pageIndex = 0;
   pageSizeOptions = [1, 2, 4];
 
-  showPageSizeOptions = true;
-
-  passPageIndexToParent = output<number>();
+  passPageOptToParent = output<PageOpt>();
   
-  pageEvent: PageEvent;
+  totalPages = signal(0);
+  totalCount = input<number>(0);
+  curPage = signal(1);
+  perPage = signal(3);
+  
+  //showPageSizeOptions = true;
+  // passTodoItemsToParent= output<PaginationMetaData>();
+  //passTodoItemsToParent= output<Array<Todo>>();
 
-  handlePageEvent(e: PageEvent) {
-    this.pageEvent = e;
-    this.length = e.length;
-    this.pageSize = e.pageSize;
-    this.pageIndex = e.pageIndex;
-
-    console.log(this.pageIndex)
-    let offset = (this.pageIndex - 1) * this.pageSize;
-    this.passPageIndexToParent.emit(offset+this.pageSize);
+  ngOnInit(): void {
+    this.totalPages.set(Math.ceil(this.totalCount()/this.perPage()));
+    this.paginate(1, this.perPage());
   }
 
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    if (setPageSizeOptionsInput) {
-      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  paginate(page: number, size:number){
+    page = page < 1 ? 1: page;
+    let offset = (page -1) * size;
+    if(page >= 1){
+      size += offset;
+      this.totalPages.set(Math.ceil(this.totalCount()/this.perPage()));
+      this.passPageOptToParent.emit({offset, size})
     }
   }
 
+  nextPage(page: number, size: number){
+    this.totalPages.set(Math.ceil(this.totalCount() / size));
+    page++;
+    if(page <= this.totalPages()){
+      this.curPage.set(page);
+      this.perPage.set(size);
+      this.paginate(page, size);
+    }
+  }
+  prevPage(page: number, size: number){
+    this.totalPages.set(Math.ceil(this.totalCount() / size));
+    page--;
+    if(page > 0){
+      this.curPage.set(page);
+      this.perPage.set(size);
+      this.paginate(page, size);
+    }
+  }
 }
