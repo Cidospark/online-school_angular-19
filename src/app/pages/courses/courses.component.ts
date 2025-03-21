@@ -60,7 +60,7 @@ export class CoursesComponent implements OnInit {
     id: 3
   },
   {
-    image: 'assets/images/banner1.jpg',
+    image: 'assets/images/banner3.jpg',
     ratings: 5,
     reviews: 12,
     title: 'Learn Javascript from beginner to matery',
@@ -74,8 +74,15 @@ export class CoursesComponent implements OnInit {
   paginatedList = signal<Course[]>([]);
   totalCourses = 0;
 
+  interval = null;
+
 ngOnInit(): void {
-  this.totalCourses = this.listOfCourses().length;
+  if(this.interval) {
+    clearInterval(this.interval);
+}
+  this.interval = setInterval(() => {
+    this.totalCourses = this.listOfCourses().length;
+  }, 700);
 }
 
 setLikedCourse(id: number){

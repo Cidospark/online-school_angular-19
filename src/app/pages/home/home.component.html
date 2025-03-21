@@ -1,14 +1,14 @@
 <div class="overlay-container-home">
     <div class="gray-overlay">
-        <div class="components-container text-white max-w-7xl mx-auto pt-6">
+        <div class="components-container text-white max-w-7xl mx-auto">
             <app-header />
-            <p class="text-6xl pt-24 yellow-green-color text-center">
+            <p class="text-6xl pt-12 text-white text-center">
                 Level up your career.
             </p>
             <p class="text-1xl pt-2 text-yellow-200 text-center">
                 Learn from tech experts with our online courses.
             </p>
-            <div class="stats-container my-4 p-14 transparent-bg-black">
+            <div class="stats-container mt-8 p-2 transparent-bg-black">
 
                 @for (item of statItems(); track $index) {
                     <app-stats-item  
@@ -24,18 +24,31 @@
 </div>
 
 <div style="background-color: #e8e8e8;
-margin-top: -80px; min-height: 200px; border-radius: 15px; position: relative; z-index: 1000;"
-class="components-container max-w-7xl mx-auto" >
-<h1 class="text-4xl p-5 flex justify-between items-center">
-     <p class="font-bold text-3xl">Featured courses</p>
-     <div class="courosel-btns flex flex-nowrap">
-        <div class="border border-slate-300  hover:border-slate-400 border-4 hover:bg-yellow-100 p-2 rounded m-1  flex justify-center items-center">
-            <mat-icon aria-hidden="false" aria-label="left button" fontIcon="arrow_back_ios" class="left-courosel-btn"></mat-icon>
+margin-top: -60px; min-height: 200px; border-radius: 15px; position: relative; z-index: 1000;"
+class="components-container max-w-7xl mx-auto pb-12" >
+    <h1 class="text-4xl p-5 flex justify-between items-center">
+        <p class="font-bold text-3xl">Featured courses</p>
+        <div class="courosel-btns flex flex-nowrap">
+            <div class="border border-slate-300  hover:border-slate-400 border-4 hover:bg-yellow-100 p-2 rounded m-1  flex justify-center items-center">
+                <mat-icon aria-hidden="false" aria-label="left button" fontIcon="arrow_back_ios" class="left-courosel-btn"></mat-icon>
+            </div>
+            <div class="border border-slate-300 hover:border-slate-400 border-4 hover:bg-yellow-100  p-2 rounded m-1 flex justify-center items-center">
+                <mat-icon aria-hidden="false" aria-label="right button" fontIcon="arrow_forward_ios" class="right-courosel-btn"></mat-icon>
+            </div>
         </div>
-        <div class="border border-slate-300 hover:border-slate-400 border-4 hover:bg-yellow-100  p-2 rounded m-1 flex justify-center items-center">
-            <mat-icon aria-hidden="false" aria-label="right button" fontIcon="arrow_forward_ios" class="right-courosel-btn"></mat-icon>
-        </div>
-     </div>
-</h1>
+    </h1>
    
+    <div class="featured-courses">
+        <mat-grid-list 
+            cols="3" 
+            rowHeight="470"
+            gutterSize="60"
+        >
+            @for (item of featuredCourses(); track item.id) {
+                <mat-grid-tile class="rounded-xl scale-on-hover addBoxShadowBelow" >
+                    <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item"  />
+                </mat-grid-tile>
+            }
+        </mat-grid-list>
+    </div>
 </div>

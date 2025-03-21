@@ -2,7 +2,7 @@
     width: 100px;
     height: 100px;
     font-size: 100px;
-    color: yellowgreen
+    color: rgba(255,255,255,.3)
 }
 .stat-item p{
     display: flex;

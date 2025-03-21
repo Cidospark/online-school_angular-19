@@ -52,7 +52,7 @@ body {
 
 .overlay-container{
     position: relative;
-    height: 300px;
+    height: 200px;
     overflow: hidden;
     background-image: url("../public/assets/images/banner3.jpg");
     background-size: cover;
@@ -77,4 +77,16 @@ body {
 .h-separator{
     margin: 40px auto;
     border-top: 2px solid #eee;
+}
+
+
+.scale-on-hover{
+    transition: transform .5s;
+    cursor: pointer;
+}
+.scale-on-hover:hover{
+    transform: scale(1.05);
+}
+.addBoxShadowBelow{
+    box-shadow: 0px 2px 4px 2px #aaa;
 }

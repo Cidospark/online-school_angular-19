@@ -1,8 +1,8 @@
 <div class="overlay-container mb-12">
     <div class="gray-overlay">
-        <div class="components-container text-white max-w-7xl mx-auto pt-6">
+        <div class="components-container text-white max-w-7xl mx-auto">
             <app-header />
-            <p class="text-4xl font-bold pt-3 text-yellow-300 text-center">
+            <p class="text-4xl font-bold text-yellow-300 text-center">
                 Our Courses
             </p>
         </div>
@@ -15,13 +15,26 @@
     rowHeight="{{rowHeight()}}"
     gutterSize="60"
 >
+@if(!paginatedList().length){
+    <div class="font-bold 
+    p-6 mx-auto flex 
+    justify-center
+    items-center
+    align-items
+    min-h-full
+    text-gray-400
+    "
+    >Loading...</div>
+}
     @for (item of paginatedList(); track item.id) {
-        <mat-grid-tile class="border rounded-xl scale-on-hover" >
+        <mat-grid-tile class="rounded-xl scale-on-hover addBoxShadowBelow" >
             <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item"  />
         </mat-grid-tile>
     }
   </mat-grid-list>
-  <div class="py-6">
-    <app-pagination (passPageOptToParent)="onPaginate($event)" [totalCount]="totalCourses"/>
-  </div>
+  @if(totalCourses > 0){
+    <div class="py-6">
+        <app-pagination (passPageOptToParent)="onPaginate($event)" [totalCount]="totalCourses"/>
+      </div>
+  }
 </div>

@@ -1,8 +1,0 @@
-
-.scale-on-hover{
-    transition: transform .5s;
-    cursor: pointer;
-}
-.scale-on-hover:hover{
-    transform: scale(1.05);
-}
