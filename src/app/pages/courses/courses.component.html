@@ -15,10 +15,13 @@
     rowHeight="{{rowHeight()}}"
     gutterSize="60"
 >
-    @for (item of listOfCourses(); track item.id) {
+    @for (item of paginatedList(); track item.id) {
         <mat-grid-tile class="border rounded-xl scale-on-hover" >
             <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item"  />
         </mat-grid-tile>
     }
   </mat-grid-list>
+  <div>
+    <app-pagination (passPageIndexToParent)="onPaginate($event)" />
+  </div>
 </div>

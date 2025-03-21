@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { Course } from '../../models/course.model';
 import { SingleCourseComponent } from '../../components/single-course/single-course.component';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
 
 const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
 @Component({
@@ -14,12 +15,13 @@ const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
     MatGridListModule,
     MatIconModule,
     MatCardModule,
-    SingleCourseComponent
+    SingleCourseComponent,
+    PaginationComponent
   ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit {
   cols = signal(3);
   rowHeight = signal(ROWS_HEIGHT[this.cols()]);
   listOfCourses = signal<Course[]>(
@@ -68,6 +70,13 @@ export class CoursesComponent {
     id: 4
   }])
 
+  paginatedList = signal<Course[]>([]);
+
+ngOnInit(): void {
+  this.paginatedList.set(
+    this.listOfCourses().slice(0, 2)
+  );
+}
 
   setLikedCourse(id: number){
     this.listOfCourses().map(x => {
@@ -76,5 +85,11 @@ export class CoursesComponent {
         x.hearts++
       }
     })
+  }
+
+  onPaginate(offset:number){
+    this.paginatedList.set(
+      this.listOfCourses().slice(offset, 2)
+    );
   }
 }
