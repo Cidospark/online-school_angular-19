@@ -1,5 +1,4 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -7,24 +6,26 @@ import { Course } from '../../models/course.model';
 import { SingleCourseComponent } from '../../components/single-course/single-course.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { PageOpt } from '../../models/pageOpt.models';
+import { CoursePageHeaderComponent } from '../../components/course-page-header/course-page-header.component';
 
 const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
 @Component({
   selector: 'app-courses',
   imports: [
-    HeaderComponent,
+    CoursePageHeaderComponent,
     MatGridListModule,
     MatIconModule,
     MatCardModule,
     SingleCourseComponent,
     PaginationComponent
-  ],
+],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
   cols = signal(3);
   rowHeight = signal(ROWS_HEIGHT[this.cols()]);
+  subTitle = "Our Courses";
   listOfCourses = signal<Course[]>(
     [{
     image: 'assets/images/banner1.jpg',
