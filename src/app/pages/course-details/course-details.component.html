@@ -1,1 +1,81 @@
-<app-course-page-header />
+<app-course-page-header>{{subTitle}}</app-course-page-header>
+
+<div class="max-w-7xl mx-auto">
+    <div class="flex justify-between">
+        <div class="main-side p-12 bg-white">
+            <p class="text-3xl">
+                {{course().title}}
+            </p>
+            <div class="flex justify-around items-center my-6 pt-6 border-t">
+                <div class="flex items-center thumbnail">
+                    <div class="thumbnail-img mr-3 w-7 h-7 bg-gray-300 text-white rounded-full flex items-center justify-center">
+                        <mat-icon aria-hidden="false" aria-label="person" fontIcon="person" class="rounded"></mat-icon>
+                    </div>
+                    <div class="desc">
+                        <p class="text-xs d-top">Teacher</p>
+                        <p class="text-xs d-buttom">{{course().name}}</p>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="text-xs d-top">Category</p>
+                    <p class="text-xs d-buttom">Programming</p>
+                </div>
+
+                <div class="desc">
+                    <p class="text-xs d-top">Reviews</p>
+                    <div class="text-xs d-buttom flex">
+                        <div class="text-yellow-500 mr-2" >
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                        </div>
+                        <p  class="">(20 Reviews)</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="">
+                <img src="assets/images/banner2.jpg" />
+            </div>
+
+            <div class="tab min-h-[400px] border mt-12">
+                
+            </div>
+        </div>
+
+        <div class="right-side ">
+            <div class="p-12 bg-white">
+                <p class="text-3xl">
+                    Course Features
+                </p> 
+                <div class="flex justify-between items-center py-3 text-gray-500">
+                    <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500" aria-hidden="false" aria-label="time" fontIcon="schedule"></mat-icon> Duration : </span>
+                    <span>11 Hours</span>
+                </div>
+                <div class="flex justify-between items-center py-3 text-gray-500">
+                    <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="library_books"></mat-icon> Lectures : </span>
+                    <span>9</span>
+                </div>
+                <div class="flex justify-between items-center py-3 text-gray-500">
+                    <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="quiz"></mat-icon> Quizes : </span>
+                    <span>5</span>
+                </div>
+                <div class="flex justify-between items-center py-3 text-gray-500">
+                    <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="person"></mat-icon> Students : </span>
+                    <span>100</span>
+                </div>
+
+                <div class="flex justify-between items-center border-t pt-4 mt-4">
+                    <p class="font-bold  text-red-900">
+                        Price: {{25 | currency}} 
+                    </p>
+                    <button mat-stroked-button>
+                        Join
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

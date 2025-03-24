@@ -11,5 +11,4 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class CoursePageHeaderComponent {
   subTitle = input<string>();
-
 }
