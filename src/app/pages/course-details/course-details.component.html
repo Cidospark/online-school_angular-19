@@ -12,13 +12,23 @@
                         <mat-icon aria-hidden="false" aria-label="person" fontIcon="person" class="rounded"></mat-icon>
                     </div>
                     <div class="desc">
-                        <p class="text-xs d-top">Teacher</p>
+                        <p class="text-xs d-top">Instructor</p>
                         <p class="text-xs d-buttom">{{course().name}}</p>
                     </div>
                 </div>
+
                 <div class="desc">
                     <p class="text-xs d-top">Category</p>
                     <p class="text-xs d-buttom">Programming</p>
+                </div>
+
+                <div class="desc">
+                    <p class="text-xs d-top">Hearts</p>
+                    <p class="flex items-center text-xs d-buttom">
+                        <mat-icon 
+                        (click)="onHitHeart(course().id)"
+                        aria-hidden="false" aria-label="heart" fontIcon="favorite" class="mr-1 text-red-400"></mat-icon> {{course().hearts}}
+                    </p>
                 </div>
 
                 <div class="desc">
@@ -40,8 +50,29 @@
                 <img src="assets/images/banner2.jpg" />
             </div>
 
-            <div class="tab min-h-[400px] border mt-12">
-                
+            <div class="tab min-h-[400px] border border-t-0 mt-12">
+                <div class="tab-header bg-gray-200 text-center">
+                    <div class="grid grid-rows-1 grid-flow-col">
+                        @for (tab of tabs; track $index) {
+                            <div (click)="setAsActiveTab(tab.key)" class="py-4 c-pointer" [ngClass]="{'bg-white':tab.value, 'border-t':tab.value}">{{tab.key}}</div>
+                        }
+                    </div>
+                </div>
+                @if(activeTab.toLowerCase() == 'overview'){
+                    <app-tab-comp-overview />
+                }
+
+                @if(activeTab.toLowerCase() == 'curriculum'){
+                    <app-tab-comp-curriculum />
+                }
+
+                @if(activeTab.toLowerCase() == 'instructor'){
+                    <app-tab-comp-instructor />
+                }
+
+                @if(activeTab.toLowerCase() == 'reviews'){
+                    <app-tab-comp-reviews />
+                }
             </div>
         </div>
 
@@ -71,9 +102,7 @@
                     <p class="font-bold  text-red-900">
                         Price: {{25 | currency}} 
                     </p>
-                    <button mat-stroked-button>
-                        Join
-                    </button>
+                    <mat-icon aria-hidden="false" aria-label="icon" fontIcon="shopping_cart" class="text-blue-500 c-pointer hover:text-blue-300 hover:scale-150" />
                 </div>
             </div>
         </div>

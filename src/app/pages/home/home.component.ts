@@ -31,7 +31,7 @@ export class HomeComponent {
   },{
     icon: 'people',
     statistics: 5000,
-    title: 'Global Teachers'
+    title: 'Global Instructors'
   }]);
 
   featuredCourses = signal<Course[]>(

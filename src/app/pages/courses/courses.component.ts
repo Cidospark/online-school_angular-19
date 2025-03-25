@@ -6,7 +6,7 @@ import { Course } from '../../models/course.model';
 import { SingleCourseComponent } from '../../components/single-course/single-course.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { PageOpt } from '../../models/pageOpt.models';
-import { CoursePageHeaderComponent } from '../../components/course-page-header/course-page-header.component';
+import { CoursePageHeaderComponent } from '../../components/page-header/page-header.component';
 
 const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
 @Component({

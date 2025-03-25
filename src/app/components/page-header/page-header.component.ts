@@ -6,8 +6,8 @@ import { HeaderComponent } from '../header/header.component';
   imports: [
     HeaderComponent
   ],
-  templateUrl: './course-page-header.component.html',
-  styleUrl: './course-page-header.component.css'
+  templateUrl: './page-header.component.html',
+  styleUrl: './page-header.component.css'
 })
 export class CoursePageHeaderComponent {
   subTitle = input<string>();
