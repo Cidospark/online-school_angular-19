@@ -1,36 +1,42 @@
     <a routerLink="/course-details/{{course().id}}" >
-    <mat-card>
-        <div class="card-img">
-            <img src="{{course().image}}" alt="card img" />
-        </div>
-        <div class="bg-white pt-3 px-3 flex items-center">
-            <div class="text-yellow-500 mr-2" >
-                <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
-            </div>
-            <div class="text-sm text-slate-500">({{course().reviews}} reviews)</div>
-        </div>
-        <p class="bg-white px-3 pb-3 font-bold text-xl text-yellow-900">
-            {{course().title}}
-        </p>
-        <div class="flex justify-between items-center p-3 text-slate-500">
-            <div class="flex items-center">
-                <div class="thumbnail mr-1 w-7 h-7 bg-gray-300 text-white rounded-full flex items-center justify-center">
-                    <mat-icon aria-hidden="false" aria-label="person" fontIcon="person" class="rounded"></mat-icon>
+        <mat-card>
+            <div [ngClass]="{'flex items-center':fullWidthMode(), 'bg-white':fullWidthMode()}">
+                <div class="card-img" [ngClass]="{'w-[30%] mr-8':fullWidthMode()}">
+                    <img src="{{course().image}}" alt="card img" />
                 </div>
-                <span>{{course().name}}</span>
+                <div [ngClass]="{'w-[40%]':fullWidthMode()}">
+                    <div class="bg-white pt-3 px-3 flex items-center">
+                        <div class="text-yellow-500 mr-2" >
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
+                        </div>
+                        <div class="text-sm text-slate-500">({{course().reviews}} reviews)</div>
+                    </div>
+                    <p class="bg-white px-3 pb-3 font-bold text-xl text-yellow-900">
+                        {{course().title}}
+                    </p>
+                    <div class="flex justify-between items-center p-3 text-slate-500">
+                        <div class="flex items-center">
+                            <div class="thumbnail mr-1 w-7 h-7 bg-gray-300 text-white rounded-full flex items-center justify-center">
+                                <mat-icon aria-hidden="false" aria-label="person" fontIcon="person" class="rounded"></mat-icon>
+                            </div>
+                            <span>{{course().name}}</span>
+                        </div>
+                        <span class="flex items-center">
+                            <mat-icon aria-hidden="false" aria-label="school" fontIcon="school" class="rounded mr-1 text-yellow-700"></mat-icon>  {{course().students}}
+                        </span>
+                        <span class="flex items-center">
+                            <mat-icon 
+                            (click)="onHitHeart(course().id)"
+                            aria-hidden="false" aria-label="heart" fontIcon="favorite" class="rounded mr-1 text-red-400"></mat-icon> {{course().hearts}}
+                        </span>
+                    </div>
+                </div>
             </div>
-            <span class="flex items-center">
-                <mat-icon aria-hidden="false" aria-label="school" fontIcon="school" class="rounded mr-1 text-yellow-700"></mat-icon>  {{course().students}}
-            </span>
-            <span class="flex items-center">
-                <mat-icon 
-                (click)="onHitHeart(course().id)"
-                aria-hidden="false" aria-label="heart" fontIcon="favorite" class="rounded mr-1 text-red-400"></mat-icon> {{course().hearts}}
-            </span>
-        </div>
        </mat-card>
     </a>
+<!-- 
+     -->

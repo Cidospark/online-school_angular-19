@@ -1,18 +1,21 @@
-<div class="flex">
-    <img src="{{user.photoUrl.text}}" alt="instructor" class="mr-6 {{user.photoUrl.size}}">
-    <span>
-        <p class="font-bold {{user.name.size}}" >
-           {{user.name.text}}
+<div class="flex border-t pt-6">
+    <div class=" w-[{{user().photoUrl.size}}px] h-[{{user().photoUrl.size}}px] mr-6 ">
+        <img src="{{user().photoUrl.text}}" alt="user" class="w-[100%]">
+
+    </div>
+    <div>
+        <p class="font-bold {{user().name.size}}" >
+           {{user().name.text}}
         </p>
-        <p class="text-gray-400">{{user.position}}</p>
+        <p class="text-gray-400">{{user().position}}</p>
         <p class="socials mt-6">
-            @for (item of user.socials; track $index) {
+            @for (item of user().socials; track $index) {
 
                 <mat-icon aria-hidden="false" aria-label="icon" fontIcon="{{item}}" style="transform: scale(1.5);" class="text-blue-500" />
             }
         </p>
-    </span>
+    </div>
 </div>
 <p class="my-6 text-gray-500">
-    {{user.desc}}
+    {{user().desc}}
 </p>

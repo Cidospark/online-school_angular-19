@@ -58,7 +58,7 @@ export class HomeComponent {
       id: 2
     },
     {
-      image: 'assets/images/banner2.jpg',
+      image: 'assets/images/banner3.jpg',
       ratings: 5,
       reviews: 12,
       title: 'Learn Javascript from beginner to matery',

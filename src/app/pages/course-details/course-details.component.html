@@ -1,6 +1,6 @@
 <app-course-page-header>{{subTitle}}</app-course-page-header>
 
-<div class="max-w-7xl mx-auto">
+<div class="max-w-7xl mx-auto pb-12">
     <div class="flex justify-between">
         <div class="main-side p-12 bg-white">
             <p class="text-3xl">
@@ -27,7 +27,7 @@
                     <p class="flex items-center text-xs d-buttom">
                         <mat-icon 
                         (click)="onHitHeart(course().id)"
-                        aria-hidden="false" aria-label="heart" fontIcon="favorite" class="mr-1 text-red-400"></mat-icon> {{course().hearts}}
+                        aria-hidden="false" aria-label="heart" fontIcon="favorite" class="mr-1 text-red-500"></mat-icon> {{course().hearts}}
                     </p>
                 </div>
 
@@ -47,11 +47,11 @@
 
             </div>
             <div class="">
-                <img src="assets/images/banner2.jpg" />
+                <img src="assets/images/banner1.jpg" />
             </div>
 
             <div class="tab min-h-[400px] border border-t-0 mt-12">
-                <div class="tab-header bg-gray-200 text-center">
+                <div class="tab-header bg-gray-100 text-center">
                     <div class="grid grid-rows-1 grid-flow-col">
                         @for (tab of tabs; track $index) {
                             <div (click)="setAsActiveTab(tab.key)" class="py-4 c-pointer" [ngClass]="{'bg-white':tab.value, 'border-t':tab.value}">{{tab.key}}</div>
@@ -102,7 +102,7 @@
                     <p class="font-bold  text-red-900">
                         Price: {{25 | currency}} 
                     </p>
-                    <mat-icon aria-hidden="false" aria-label="icon" fontIcon="shopping_cart" class="text-blue-500 c-pointer hover:text-blue-300 hover:scale-150" />
+                    <mat-icon aria-hidden="false" aria-label="icon" fontIcon="shopping_cart" class="transition ease-linear delay-200 text-blue-500 c-pointer hover:text-blue-600 hover:scale-150" />
                 </div>
             </div>
         </div>

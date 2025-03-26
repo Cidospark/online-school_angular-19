@@ -1,10 +1,22 @@
 <app-course-page-header>Our Courses</app-course-page-header>
 
 <div class="max-w-7xl mx-auto">
+
+<div class="bg-white p-2 pt-4 pl-4 rounded-md mb-12">
+    <div class="flex justify-end items-center text-gray-500">
+        <button (click)="onColumnsUpdated(1)" style="transform: scale(1.5);" class="mr-4">
+            <mat-icon>view_list</mat-icon>
+        </button>
+        <button (click)="onColumnsUpdated(3)" style="transform: scale(1.5);" class="mr-2">
+            <mat-icon>view_module</mat-icon>
+        </button>
+    </div>
+</div>
+
 <mat-grid-list 
     cols="{{cols()}}" 
     rowHeight="{{rowHeight()}}"
-    gutterSize="60"
+    gutterSize="{{gutterSize}}"
 >
 @if(!paginatedList().length){
     <div class="font-bold 
@@ -17,11 +29,11 @@
     "
     >Loading...</div>
 }
-    @for (item of paginatedList(); track item.id) {
-        <mat-grid-tile class="rounded-xl scale-on-hover " >
-            <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item"  />
-        </mat-grid-tile>
-    }
+@for (item of paginatedList(); track item.id) {
+    <mat-grid-tile class="rounded-xl scale-on-hover " >
+        <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item" [fullWidthMode]="cols()===1" class="w-full" />
+    </mat-grid-tile>
+}
   </mat-grid-list>
   @if(totalCourses > 0){
     <div class="py-6">

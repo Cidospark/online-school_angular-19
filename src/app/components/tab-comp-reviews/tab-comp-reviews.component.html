@@ -1,3 +1,13 @@
 <div class="p-6">
-    
+    <div class="flex justify-even items-center my-4">
+        <button  class="mr-3 bg-blue-500 hover:bg-blue-600 text-white flex p-2 px-4 rounded-full  justify-between items-center">Drop a comment  
+            <mat-icon aria-hidden="false" fontIcon="comment" class="mx-2"></mat-icon> ({{reviewers.length}})
+        </button>
+        <button  class="mr-3 bg-red-500 hover:bg-red-600 text-white flex p-2 px-4 rounded-full justify-between items-center">Drop a heart 
+            <mat-icon aria-hidden="false" fontIcon="favorite" class="mx-2"></mat-icon> (10)
+        </button>
+    </div>
+    @for (reviewer of reviewers; track $index) {
+        <app-thumbnail [user]="reviewer"  />
+    }
 </div>

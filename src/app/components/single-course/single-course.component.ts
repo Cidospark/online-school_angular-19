@@ -4,6 +4,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { Course } from '../../models/course.model';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-single-course',
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
     MatGridListModule,
     MatIconModule,
     MatCardModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   templateUrl: './single-course.component.html',
   styleUrl: './single-course.component.css'
@@ -29,6 +31,7 @@ export class SingleCourseComponent {
     id: 0
   })
 
+  fullWidthMode = input<boolean>(false);
   passLikedCourseToParent = output<number>();
   
   onHitHeart(id: number){

@@ -7,8 +7,9 @@ import { SingleCourseComponent } from '../../components/single-course/single-cou
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { PageOpt } from '../../models/pageOpt.models';
 import { CoursePageHeaderComponent } from '../../components/page-header/page-header.component';
+import { CommonModule } from '@angular/common';
 
-const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
+const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470}
 @Component({
   selector: 'app-courses',
   imports: [
@@ -17,13 +18,15 @@ const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470, 4:440}
     MatIconModule,
     MatCardModule,
     SingleCourseComponent,
-    PaginationComponent
+    PaginationComponent,
+    CommonModule
 ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
   cols = signal(3);
+  gutterSize = 60;
   rowHeight = signal(ROWS_HEIGHT[this.cols()]);
   subTitle = "Our Courses";
   listOfCourses = signal<Course[]>(
@@ -50,7 +53,7 @@ export class CoursesComponent implements OnInit {
     id: 2
   },
   {
-    image: 'assets/images/banner2.jpg',
+    image: 'assets/images/banner1.jpg',
     ratings: 5,
     reviews: 12,
     title: 'Learn Javascript from beginner to matery',
@@ -78,6 +81,7 @@ export class CoursesComponent implements OnInit {
   interval = null;
 
 ngOnInit(): void {
+  this.gutterSize = this.cols() == 1? 20 : 60;
   if(this.interval) {
     clearInterval(this.interval);
 }
@@ -99,5 +103,11 @@ setLikedCourse(id: number){
     this.paginatedList.set(
       this.listOfCourses().slice(pageOpt.offset, pageOpt.size)
     );
+  }
+
+  onColumnsUpdated(colsNum: number): void{
+      this.cols.set(colsNum);
+      this.gutterSize = this.cols() == 1? 20 : 60;
+      this.rowHeight.set(ROWS_HEIGHT[this.cols()]);
   }
 }
