@@ -1,4 +1,4 @@
-import { Component, OnInit, output, signal } from '@angular/core';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { CoursePageHeaderComponent } from "../../components/page-header/page-header.component";
 import { MatIconModule } from '@angular/material/icon';
 import { Course } from '../../models/course.model';
@@ -10,6 +10,8 @@ import { TabCompCurriculumComponent } from '../../components/tab-comp-curriculum
 import { TabCompOverviewComponent } from '../../components/tab-comp-overview/tab-comp-overview.component';
 import { TabCompInstructorComponent } from '../../components/tab-comp-instructor/tab-comp-instructor.component';
 import { TabCompReviewsComponent } from '../../components/tab-comp-reviews/tab-comp-reviews.component';
+import { ActivatedRoute } from '@angular/router';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-course-details',
@@ -28,17 +30,20 @@ import { TabCompReviewsComponent } from '../../components/tab-comp-reviews/tab-c
   styleUrl: './course-details.component.css'
 })
 export class CourseDetailsComponent implements OnInit {
+
+  courseService = inject(CourseService);
+
   subTitle = "Single Course"
   course = signal<Course>({
-    image: 'assets/images/banner1.jpg',
-    ratings: 5,
-    reviews: 12,
-    title: 'Learn Javascript from beginner to matery Learn Javascript from beginner to matery Learn Javascript from beginner to matery',
-    photo: 'person',
-    name: 'John Doe',
-    students: 20,
-    hearts: 10,
-    id: 1
+    image: '',
+    ratings: 0,
+    reviews: 0,
+    title: '',
+    photo: '',
+    name: '',
+    students: 0,
+    hearts: 0,
+    id: 0
   });
   
   activeTab: string ='';
@@ -49,9 +54,15 @@ export class CourseDetailsComponent implements OnInit {
     {key:'Reviews', value: false},
   ];
 
+  routeId:number;
+  
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(p => this.routeId=p['id'])
+  }
   ngOnInit(): void {
     // this.activeTab = this.tabs.filter(x => x.value == true).keys[0]
     this.activeTab = this.tabs.filter(x => x.value==true)[0].key;
+    this.course.set(this.courseService.GetSingleCourse(this.routeId));
   }
 
 
@@ -66,4 +77,5 @@ export class CourseDetailsComponent implements OnInit {
   onHitHeart(id: number){
     this.passLikedCourseToParent.emit(id);
   }
+
 }

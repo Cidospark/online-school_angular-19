@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -8,6 +8,7 @@ import { PaginationComponent } from '../../components/pagination/pagination.comp
 import { PageOpt } from '../../models/pageOpt.models';
 import { CoursePageHeaderComponent } from '../../components/page-header/page-header.component';
 import { CommonModule } from '@angular/common';
+import { CourseService } from '../../services/course.service';
 
 const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470}
 @Component({
@@ -25,55 +26,12 @@ const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470}
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
+  courseService = inject(CourseService)
   cols = signal(3);
   gutterSize = 60;
   rowHeight = signal(ROWS_HEIGHT[this.cols()]);
   subTitle = "Our Courses";
-  listOfCourses = signal<Course[]>(
-    [{
-    image: 'assets/images/banner1.jpg',
-    ratings: 5,
-    reviews: 12,
-    title: 'Learn Javascript from beginner to matery',
-    photo: 'person',
-    name: 'John Doe',
-    students: 20,
-    hearts: 10,
-    id: 1
-  },
-  {
-    image: 'assets/images/banner3.jpg',
-    ratings: 5,
-    reviews: 12,
-    title: 'Learn Javascript from beginner to matery',
-    photo: 'person',
-    name: 'John Doe',
-    students: 20,
-    hearts: 10,
-    id: 2
-  },
-  {
-    image: 'assets/images/banner1.jpg',
-    ratings: 5,
-    reviews: 12,
-    title: 'Learn Javascript from beginner to matery',
-    photo: 'person',
-    name: 'John Doe',
-    students: 20,
-    hearts: 10,
-    id: 3
-  },
-  {
-    image: 'assets/images/banner3.jpg',
-    ratings: 5,
-    reviews: 12,
-    title: 'Learn Javascript from beginner to matery',
-    photo: 'person',
-    name: 'John Doe',
-    students: 20,
-    hearts: 10,
-    id: 4
-  }])
+  listOfCourses = signal<Course[]>([])
 
   paginatedList = signal<Course[]>([]);
   totalCourses = 0;
@@ -81,6 +39,7 @@ export class CoursesComponent implements OnInit {
   interval = null;
 
 ngOnInit(): void {
+  this.listOfCourses.set(this.courseService.GetListOfCourses())
   this.gutterSize = this.cols() == 1? 20 : 60;
   if(this.interval) {
     clearInterval(this.interval);

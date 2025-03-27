@@ -41,13 +41,13 @@
                             <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
                             <mat-icon aria-hidden="false" aria-label="star" fontIcon="star"></mat-icon>
                         </div>
-                        <p  class="">(20 Reviews)</p>
+                        <p  class="">({{course().reviews}} Reviews)</p>
                     </div>
                 </div>
 
             </div>
             <div class="">
-                <img src="assets/images/banner1.jpg" />
+                <img src="{{course().image}}" />
             </div>
 
             <div class="tab min-h-[400px] border border-t-0 mt-12">
@@ -71,7 +71,7 @@
                 }
 
                 @if(activeTab.toLowerCase() == 'reviews'){
-                    <app-tab-comp-reviews />
+                    <app-tab-comp-reviews [course]="course()" />
                 }
             </div>
         </div>
@@ -83,7 +83,7 @@
                 </p> 
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500" aria-hidden="false" aria-label="time" fontIcon="schedule"></mat-icon> Duration : </span>
-                    <span>11 Hours</span>
+                    <span>11 Hrs</span>
                 </div>
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="library_books"></mat-icon> Lectures : </span>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="person"></mat-icon> Students : </span>
-                    <span>100</span>
+                    <span>{{course().students}}</span>
                 </div>
 
                 <div class="flex justify-between items-center border-t pt-4 mt-4">

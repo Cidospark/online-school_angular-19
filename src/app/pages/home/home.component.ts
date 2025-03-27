@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import { StatItem } from '../../models/stateItem.model';
 import { StatsItemComponent } from '../../components/stats-item/stats-item.component';
 import { Course } from '../../models/course.model';
 import { SingleCourseComponent } from '../../components/single-course/single-course.component';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,9 @@ import { SingleCourseComponent } from '../../components/single-course/single-cou
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  courseService = inject(CourseService);
+
   statItems = signal<StatItem[]>([{
     icon: 'school',
     statistics: 20000,
@@ -33,42 +36,15 @@ export class HomeComponent {
     statistics: 5000,
     title: 'Global Instructors'
   }]);
-
-  featuredCourses = signal<Course[]>(
-      [{
-      image: 'assets/images/banner3.jpg',
-      ratings: 5,
-      reviews: 12,
-      title: 'Learn Javascript from beginner to matery',
-      photo: 'person',
-      name: 'John Doe',
-      students: 20,
-      hearts: 10,
-      id: 1
-    },
-    {
-      image: 'assets/images/banner1.jpg',
-      ratings: 5,
-      reviews: 12,
-      title: 'Learn Javascript from beginner to matery',
-      photo: 'person',
-      name: 'John Doe',
-      students: 20,
-      hearts: 10,
-      id: 2
-    },
-    {
-      image: 'assets/images/banner3.jpg',
-      ratings: 5,
-      reviews: 12,
-      title: 'Learn Javascript from beginner to matery',
-      photo: 'person',
-      name: 'John Doe',
-      students: 20,
-      hearts: 10,
-      id: 3
-    }])
-
+  
+  featuredCourses = signal<Course[]>([])
+  
+  ngOnInit(): void {
+    let courses = this.courseService.GetListOfCourses();
+    if(courses && courses.length>0){
+      this.featuredCourses.set(courses.slice(0,3));
+    }
+  }
 
   setLikedCourse(id: number){
     this.featuredCourses().map(x => {

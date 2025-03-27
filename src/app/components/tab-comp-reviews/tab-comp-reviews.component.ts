@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { ThumbnailComponent } from '../thumbnail/thumbnail.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Course } from '../../models/course.model';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-tab-comp-reviews',
@@ -14,6 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './tab-comp-reviews.component.css'
 })
 export class TabCompReviewsComponent {
+
+  courseService = inject(CourseService);
+  course = input<Course>();
+
   reviewers = [{
     name: {text:"Candy Hox", size: "text-sx"},
     position:  "Senior Software Engineer",
@@ -38,4 +44,10 @@ export class TabCompReviewsComponent {
           but the majority have suffered alteration in some form, 
           by injected humour, or randomised words which.`
   }]
+
+  likeCourse(){
+    let liked = this.courseService.LikeACourse(this.course());
+    if(liked)
+      this.course().hearts = liked.hearts;
+  }
 }
