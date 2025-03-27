@@ -31,7 +31,7 @@
 }
 @for (item of paginatedList(); track item.id) {
     <mat-grid-tile class="rounded-xl scale-on-hover " >
-        <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item" [fullWidthMode]="cols()===1" class="w-full" />
+        <app-single-course [course]="item" [fullWidthMode]="cols()===1" class="w-full" />
     </mat-grid-tile>
 }
   </mat-grid-list>

@@ -46,7 +46,7 @@ class="components-container max-w-7xl mx-auto pb-12" >
         >
             @for (item of featuredCourses(); track item.id) {
                 <mat-grid-tile class="rounded-xl scale-on-hover " >
-                    <app-single-course (passLikedCourseToParent)="setLikedCourse($event)" [course]="item"  />
+                    <app-single-course [course]="item"  />
                 </mat-grid-tile>
             }
         </mat-grid-list>

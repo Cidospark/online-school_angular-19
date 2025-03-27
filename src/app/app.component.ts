@@ -14,10 +14,8 @@ export class AppComponent implements OnInit {
   courseService = inject(CourseService);
   ngOnInit(): void {
     let courses = this.courseService.GetListOfCourses();
-console.log(courses)
 
     if(!courses || courses.length < 1){
-console.log("!courses")
       localStorage.setItem("courses", JSON.stringify([{
         image: 'assets/images/banner1.jpg',
         ratings: 5,
@@ -35,7 +33,7 @@ console.log("!courses")
         reviews: 12,
         title: 'Learn Javascript from beginner to matery',
         photo: 'person',
-        name: 'John Doe',
+        name: 'Mark Huffman',
         students: 30,
         hearts: 10,
         id: 2
@@ -46,7 +44,7 @@ console.log("!courses")
         reviews: 3,
         title: 'Learn Javascript from beginner to matery',
         photo: 'person',
-        name: 'John Doe',
+        name: 'Louis Lee',
         students: 10,
         hearts: 12,
         id: 3
@@ -57,7 +55,7 @@ console.log("!courses")
         reviews: 0,
         title: 'Learn Javascript from beginner to matery',
         photo: 'person',
-        name: 'John Doe',
+        name: 'Van Hack',
         students: 20,
         hearts: 15,
         id: 4

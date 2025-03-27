@@ -65,17 +65,17 @@ export class CourseDetailsComponent implements OnInit {
     this.course.set(this.courseService.GetSingleCourse(this.routeId));
   }
 
+  likeCourse(){
+    let liked = this.courseService.LikeACourse(this.course());
+    if(liked)
+      this.course().hearts = liked.hearts;
+  }
 
   setAsActiveTab(key:string):void{
     this.tabs.map(x => {
       if(x.key==key){x.value=true; this.activeTab = x.key;}
       else{x.value=false}
     })
-  }
-
-  passLikedCourseToParent = output<number>();
-  onHitHeart(id: number){
-    this.passLikedCourseToParent.emit(id);
   }
 
 }

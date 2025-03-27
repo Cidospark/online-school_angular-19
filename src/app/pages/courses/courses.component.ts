@@ -48,15 +48,6 @@ ngOnInit(): void {
     this.totalCourses = this.listOfCourses().length;
   }, 700);
 }
-
-setLikedCourse(id: number){
-  this.listOfCourses().map(x => {
-    if(x.id == id)
-      {
-        x.hearts++
-      }
-    })
-  }
   
   onPaginate(pageOpt:PageOpt){
     this.paginatedList.set(

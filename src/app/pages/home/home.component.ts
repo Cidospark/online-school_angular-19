@@ -45,13 +45,4 @@ export class HomeComponent implements OnInit {
       this.featuredCourses.set(courses.slice(0,3));
     }
   }
-
-  setLikedCourse(id: number){
-    this.featuredCourses().map(x => {
-      if(x.id == id)
-        {
-          x.hearts++
-        }
-      })
-    }
 }
