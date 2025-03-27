@@ -1,0 +1,25 @@
+
+<div class="tab min-h-[400px] border border-t-0 mt-12">
+    <div class="tab-header bg-gray-100 text-center">
+        <div class="grid grid-rows-1 grid-flow-col">
+            @for (tab of tabs; track $index) {
+                <div (click)="setAsActiveTab(tab.key)" class="py-4 c-pointer" [ngClass]="{'bg-white':tab.value, 'border-t':tab.value}">{{tab.key}}</div>
+            }
+        </div>
+    </div>
+    @if(activeTab.toLowerCase() == 'overview'){
+        <app-tab-comp-overview />
+    }
+
+    @if(activeTab.toLowerCase() == 'curriculum'){
+        <app-tab-comp-curriculum />
+    }
+
+    @if(activeTab.toLowerCase() == 'instructor'){
+        <app-tab-comp-instructor />
+    }
+
+    @if(activeTab.toLowerCase() == 'reviews'){
+        <app-tab-comp-reviews [course]="course()" />
+    }
+</div>

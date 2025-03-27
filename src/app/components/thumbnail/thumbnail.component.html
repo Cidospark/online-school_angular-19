@@ -1,5 +1,5 @@
-<div class="flex border-t pt-6">
-    <div class=" w-[{{user().photoUrl.size}}px] h-[{{user().photoUrl.size}}px] mr-6 ">
+<div class="flex pt-6" [ngClass]="{'border-t':componentName()=='reviews'}">
+    <div class=" mr-6" [style.width.px]="user().photoUrl.size">
         <img src="{{user().photoUrl.text}}" alt="user" class="w-[100%]">
 
     </div>

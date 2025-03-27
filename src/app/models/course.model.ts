@@ -7,5 +7,10 @@ export interface Course{
     name: string,
     students: number,
     hearts: number,
-    id: number
+    id: number,
+    duration:string,
+    lectures:number,
+    quizes:number,
+    category:string,
+    price:number
 }

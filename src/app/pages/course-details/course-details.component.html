@@ -19,7 +19,7 @@
 
                 <div class="desc">
                     <p class="text-xs d-top">Category</p>
-                    <p class="text-xs d-buttom">Programming</p>
+                    <p class="text-xs d-buttom">{{course().category}}</p>
                 </div>
 
                 <div class="desc">
@@ -48,31 +48,7 @@
             <div class="">
                 <img src="{{course().image}}" />
             </div>
-
-            <div class="tab min-h-[400px] border border-t-0 mt-12">
-                <div class="tab-header bg-gray-100 text-center">
-                    <div class="grid grid-rows-1 grid-flow-col">
-                        @for (tab of tabs; track $index) {
-                            <div (click)="setAsActiveTab(tab.key)" class="py-4 c-pointer" [ngClass]="{'bg-white':tab.value, 'border-t':tab.value}">{{tab.key}}</div>
-                        }
-                    </div>
-                </div>
-                @if(activeTab.toLowerCase() == 'overview'){
-                    <app-tab-comp-overview />
-                }
-
-                @if(activeTab.toLowerCase() == 'curriculum'){
-                    <app-tab-comp-curriculum />
-                }
-
-                @if(activeTab.toLowerCase() == 'instructor'){
-                    <app-tab-comp-instructor />
-                }
-
-                @if(activeTab.toLowerCase() == 'reviews'){
-                    <app-tab-comp-reviews [course]="course()" />
-                }
-            </div>
+            <app-tab-container [course]="course()" />
         </div>
 
         <div class="right-side ">
@@ -82,15 +58,15 @@
                 </p> 
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500" aria-hidden="false" aria-label="time" fontIcon="schedule"></mat-icon> Duration : </span>
-                    <span>11 Hrs</span>
+                    <span>{{course().duration}}</span>
                 </div>
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="library_books"></mat-icon> Lectures : </span>
-                    <span>9</span>
+                    <span>{{course().lectures}}</span>
                 </div>
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="quiz"></mat-icon> Quizes : </span>
-                    <span>5</span>
+                    <span>{{course().quizes}}</span>
                 </div>
                 <div class="flex justify-between items-center py-3 text-gray-500">
                     <span class="flex items-center"><mat-icon class="mr-2 text-yellow-500"  aria-hidden="false" aria-label="time" fontIcon="person"></mat-icon> Students : </span>
@@ -99,7 +75,7 @@
 
                 <div class="flex justify-between items-center border-t pt-4 mt-4">
                     <p class="font-bold  text-red-900">
-                        Price: {{25 | currency}} 
+                        Price: <span class="text-gray-400">{{course().price | currency}} </span>
                     </p>
                     <mat-icon aria-hidden="false" aria-label="icon" fontIcon="shopping_cart" class="transition ease-linear delay-200 text-blue-500 c-pointer hover:text-blue-600 hover:scale-150" />
                 </div>

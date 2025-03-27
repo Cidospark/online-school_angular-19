@@ -28,7 +28,12 @@ export class SingleCourseComponent {
     name : '',
     students : 0,
     hearts : 0,
-    id: 0
+    id: 0,
+    duration: '',
+    lectures:0,
+    quizes:0,
+    category:'',
+    price:0
   })
 
   fullWidthMode = input<boolean>(false);

@@ -11,7 +11,7 @@ export class TabCompInstructorComponent {
   user:any = {
     name: {text:"Francis Ibe", size: "text-2xl"},
     position:  "Senior Software Engineer",
-    photoUrl: {text:"assets/images/r-2.jpg", size: "150"},
+    photoUrl: {text:"assets/images/r-2.jpg", size: "200"},
     socials: [ "facebook"],
     date: "",
     desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. 

@@ -10,7 +10,7 @@ import { CoursePageHeaderComponent } from '../../components/page-header/page-hea
 import { CommonModule } from '@angular/common';
 import { CourseService } from '../../services/course.service';
 
-const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:470}
+const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:480}
 @Component({
   selector: 'app-courses',
   imports: [
