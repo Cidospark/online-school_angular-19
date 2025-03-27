@@ -30,7 +30,7 @@
     >Loading...</div>
 }
 @for (item of paginatedList(); track item.id) {
-    <mat-grid-tile class="rounded-xl scale-on-hover " >
+    <mat-grid-tile class="rounded-xl scale-on-hover addBoxShadowBelow" >
         <app-single-course [course]="item" [fullWidthMode]="cols()===1" class="w-full" />
     </mat-grid-tile>
 }
