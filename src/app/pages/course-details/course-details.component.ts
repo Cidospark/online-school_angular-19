@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, output, signal } from '@angular/core';
-import { CoursePageHeaderComponent } from "../../components/page-header/page-header.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { MatIconModule } from '@angular/material/icon';
 import { Course } from '../../models/course.model';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ import { TabContainerComponent } from "../../components/tab-container/tab-contai
   selector: 'app-course-details',
   imports: [
     MatGridListModule,
-    CoursePageHeaderComponent,
+    PageHeaderComponent,
     MatIconModule,
     CommonModule,
     MatButtonModule,

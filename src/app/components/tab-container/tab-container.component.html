@@ -3,7 +3,16 @@
     <div class="tab-header bg-gray-100 text-center">
         <div class="grid grid-rows-1 grid-flow-col">
             @for (tab of tabs; track $index) {
-                <div (click)="setAsActiveTab(tab.key)" class="py-4 c-pointer" [ngClass]="{'bg-white':tab.value, 'border-t':tab.value}">{{tab.key}}</div>
+                <div (click)="setAsActiveTab(tab.key)" class="py-4 c-pointer" 
+                [ngClass]="{
+                    'bg-white border-t':tab.value,
+                    'border-r': ($index == 0 && tab.value),
+                    'border-l': ($index == (tabs.length)-1 && tab.value),
+                    'border-r border-l': ($index != (tabs.length)-1 && tab.value)
+                }"
+                >
+                 {{tab.key}}
+                </div>
             }
         </div>
     </div>

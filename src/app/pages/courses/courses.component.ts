@@ -6,7 +6,7 @@ import { Course } from '../../models/course.model';
 import { SingleCourseComponent } from '../../components/single-course/single-course.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { PageOpt } from '../../models/pageOpt.models';
-import { CoursePageHeaderComponent } from '../../components/page-header/page-header.component';
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 import { CommonModule } from '@angular/common';
 import { CourseService } from '../../services/course.service';
 
@@ -14,7 +14,7 @@ const ROWS_HEIGHT: {[id:number] : number} = {1:230, 3:480}
 @Component({
   selector: 'app-courses',
   imports: [
-    CoursePageHeaderComponent,
+    PageHeaderComponent,
     MatGridListModule,
     MatIconModule,
     MatCardModule,
